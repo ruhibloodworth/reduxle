@@ -1,0 +1,8 @@
+features:
+    ☐ grid for guesses
+    ☐ input guesses with keyboard
+    ☐ win/lose if they guess the secret word
+    ☐ show whether letters in guess are right
+    ☐ on screen keyboard showing which letters have been used
+    ☐ persist state
+    ☐ collect statistics
