@@ -7,6 +7,9 @@ An accessible wordle clone
 ### Built With
 
 - [React.js](https://reactjs.org/)
+- [Testing Library](https://testing-library.com/)
+- [Vite](https://vitejs.dev/)
+- [Vitest](https://vitest.dev/)
 
 ## Getting Started
 
