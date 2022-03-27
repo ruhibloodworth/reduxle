@@ -1,3 +1,5 @@
+import { guess, inputLetter } from "./guessesSlice";
+import { useDispatch, useKeyboardInput } from "./hooks";
 import { styled } from "./stitches.config";
 import WordGrid from "./WordGrid";
 
@@ -17,15 +19,18 @@ const Title = styled("h1", {
 });
 
 export default function App() {
+  const dispatch = useDispatch();
+  useKeyboardInput(
+    (letter) => dispatch(inputLetter(letter)),
+    () => dispatch(guess())
+  );
   return (
     <Container>
       <Header>
         <Title>Reduxle</Title>
       </Header>
       <main>
-        <WordGrid
-          words={["     ", "     ", "     ", "     ", "     ", "     "]}
-        />
+        <WordGrid />
       </main>
     </Container>
   );

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import App from "./App";
-import { render, screen } from "./test/utils";
+import { render, screen, userEvent } from "./test/utils";
 
 /**
  * Return the contents of all the children of row
@@ -29,5 +29,12 @@ describe("Integration tests", () => {
     rows.forEach((row) =>
       expect(rowContent(row)).toEqual([" ", " ", " ", " ", " "])
     );
+  });
+  it("allows the user to use the keyboard to input a guess", () => {
+    render(<App />);
+    const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
+    expect(rowContent(firstRow)).toEqual([" ", " ", " ", " ", " "]);
+    userEvent.keyboard("ABBOT{enter}");
+    expect(rowContent(firstRow)).toEqual(["A", "B", "B", "O", "T"]);
   });
 });

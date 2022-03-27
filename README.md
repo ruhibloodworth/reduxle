@@ -8,6 +8,7 @@ An accessible wordle clone
 
 - [Radix](https://www.radix-ui.com/)
 - [React.js](https://reactjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Stitches](https://stitches.dev/)
 - [Testing Library](https://testing-library.com/)
 - [Vite](https://vitejs.dev/)

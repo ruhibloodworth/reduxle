@@ -1,8 +1,14 @@
 features:
     ✔ grid for guesses @done(22-03-27 16:19)
-    ☐ input guesses with keyboard
+    ✔ input guesses with keyboard @done(22-03-27 18:33)
     ☐ win/lose if they guess the secret word
     ☐ show whether letters in guess are right
     ☐ on screen keyboard showing which letters have been used
     ☐ persist state
     ☐ collect statistics
+fixes:
+    ☐ Support backspace to delete letters
+    ☐ Limit word length to 5 letters
+    ☐ Don't allow guesses less than 5 letters long
+    ☐ Don't allow spaces in guesses
+    ☐ Don't allow more than 6 guesses
