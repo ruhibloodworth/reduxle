@@ -6,7 +6,9 @@ An accessible wordle clone
 
 ### Built With
 
+- [Radix](https://www.radix-ui.com/)
 - [React.js](https://reactjs.org/)
+- [Stitches](https://stitches.dev/)
 - [Testing Library](https://testing-library.com/)
 - [Vite](https://vitejs.dev/)
 - [Vitest](https://vitest.dev/)
