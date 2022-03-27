@@ -1,5 +1,5 @@
 features:
-    ☐ grid for guesses
+    ✔ grid for guesses @done(22-03-27 16:19)
     ☐ input guesses with keyboard
     ☐ win/lose if they guess the secret word
     ☐ show whether letters in guess are right

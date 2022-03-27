@@ -3,6 +3,7 @@ import { createStitches } from "@stitches/react";
 
 const namedColors = {
   background: "$gray1",
+  uibackground: "$gray2",
   border: "$gray7",
   text: "$gray12",
 };

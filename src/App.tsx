@@ -1,4 +1,5 @@
 import { styled } from "./stitches.config";
+import WordGrid from "./WordGrid";
 
 const Container = styled("div", {
   maxWidth: "30rem",
@@ -21,7 +22,11 @@ export default function App() {
       <Header>
         <Title>Reduxle</Title>
       </Header>
-      <main></main>
+      <main>
+        <WordGrid
+          words={["     ", "     ", "     ", "     ", "     ", "     "]}
+        />
+      </main>
     </Container>
   );
 }
