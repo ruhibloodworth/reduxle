@@ -15,7 +15,7 @@ export const useKeyboardInput = (
 ) => {
   const downHandler = (e: KeyboardEvent) => {
     const key = e.key;
-    if (key.length === 1) {
+    if (key.length === 1 && key != " ") {
       // key values for non letters are all longer than 1 character
       // and the answers are all english so we don't have to worry about long unicode characters
       onInput(key.toUpperCase());

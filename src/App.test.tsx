@@ -49,4 +49,10 @@ describe("Integration tests", () => {
     const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
     expect(rowContent(firstRow)).toEqual(["A", "B", "B", "O", "T"]);
   });
+  it("ignores whitespace in words", () => {
+    render(<App />);
+    userEvent.keyboard("A B{Tab}BOT");
+    const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
+    expect(rowContent(firstRow)).toEqual(["A", "B", "B", "O", "T"]);
+  });
 });
