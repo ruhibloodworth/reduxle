@@ -75,4 +75,14 @@ describe("Integration tests", () => {
     const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
     expect(rowContent(firstRow)).toEqual(["C", "A", "T", "S", " "]);
   });
+  it("only accepts valid words", () => {
+    render(<App />);
+    userEvent.keyboard("AAAAA{Enter}");
+    expect(screen.getByRole("alert")).toBeInTheDocument();
+    userEvent.keyboard("S");
+    const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
+    const secondRow = firstRow.nextElementSibling as Element;
+    expect(rowContent(firstRow)).toEqual(["A", "A", "A", "A", "A"]);
+    expect(rowContent(secondRow)).toEqual([" ", " ", " ", " ", " "]);
+  });
 });
