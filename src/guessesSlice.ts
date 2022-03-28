@@ -26,7 +26,6 @@ export const guessesSlice = createSlice({
     },
   },
 });
-
-export const { inputLetter, guess } = guessesSlice.actions;
+export const { guess, inputLetter } = guessesSlice.actions;
 
 export default guessesSlice.reducer;

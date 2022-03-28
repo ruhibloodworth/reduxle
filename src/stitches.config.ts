@@ -6,6 +6,8 @@ const namedColors = {
   uibackground: "$gray2",
   border: "$gray7",
   text: "$gray12",
+  uierrorbackground: "$tomato4",
+  uierrorborder: "$tomato8",
 };
 
 export const { styled, createTheme } = createStitches({

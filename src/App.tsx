@@ -1,6 +1,8 @@
-import { guess, inputLetter } from "./guessesSlice";
+import Alert from "./Alert";
+import { inputLetter } from "./guessesSlice";
 import { useDispatch, useKeyboardInput } from "./hooks";
 import { styled } from "./stitches.config";
+import { guessIfPossible } from "./store";
 import WordGrid from "./WordGrid";
 
 const Container = styled("div", {
@@ -22,16 +24,19 @@ export default function App() {
   const dispatch = useDispatch();
   useKeyboardInput(
     (letter) => dispatch(inputLetter(letter)),
-    () => dispatch(guess())
+    () => dispatch(guessIfPossible())
   );
   return (
-    <Container>
-      <Header>
-        <Title>Reduxle</Title>
-      </Header>
-      <main>
-        <WordGrid />
-      </main>
-    </Container>
+    <>
+      <Alert />
+      <Container>
+        <Header>
+          <Title>Reduxle</Title>
+        </Header>
+        <main>
+          <WordGrid />
+        </main>
+      </Container>
+    </>
   );
 }

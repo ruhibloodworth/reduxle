@@ -67,4 +67,12 @@ describe("Integration tests", () => {
     const rows = screen.queryAllByRole("row");
     expect(rows.length).toEqual(6);
   });
+  it("doesn't allow guesses with less than 5 letters", () => {
+    render(<App />);
+    userEvent.keyboard("CAT{Enter}");
+    expect(screen.getByRole("alert")).toBeInTheDocument();
+    userEvent.keyboard("S");
+    const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
+    expect(rowContent(firstRow)).toEqual(["C", "A", "T", "S", " "]);
+  });
 });
