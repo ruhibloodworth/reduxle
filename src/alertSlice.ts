@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { inputLetter } from "./guessesSlice";
 
 type AlertState = string | null;
 
@@ -14,6 +15,15 @@ const alertSlice = createSlice({
     clearAlert: (state) => {
       return null;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(inputLetter, (state, action) => {
+      if (state !== null) {
+        return null;
+      } else {
+        return state;
+      }
+    });
   },
 });
 
