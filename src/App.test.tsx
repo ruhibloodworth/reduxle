@@ -55,4 +55,16 @@ describe("Integration tests", () => {
     const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
     expect(rowContent(firstRow)).toEqual(["A", "B", "B", "O", "T"]);
   });
+  it("only accepts 6 guesses", () => {
+    render(<App />);
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    const rows = screen.queryAllByRole("row");
+    expect(rows.length).toEqual(6);
+  });
 });

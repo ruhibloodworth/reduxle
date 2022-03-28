@@ -11,5 +11,5 @@ fixes:
     ✔ Limit word length to 5 letters @done(22-03-27 20:01)
     ☐ Don't allow guesses less than 5 letters long
     ✔ Don't allow spaces in guesses @done(22-03-27 20:07)
-    ☐ Don't allow more than 6 guesses
+    ✔ Don't allow more than 6 guesses @done(22-03-27 20:10)
     ☐ limit guesses to valid words

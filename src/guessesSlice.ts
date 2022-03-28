@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { WORD_LENGTH } from "./constants";
+import { MAX_GUESSES, WORD_LENGTH } from "./constants";
 
 interface GuessesState {
   words: string[];
@@ -20,7 +20,9 @@ export const guessesSlice = createSlice({
       }
     },
     guess: (state) => {
-      state.words.push("");
+      if (state.words.length < MAX_GUESSES) {
+        state.words.push("");
+      }
     },
   },
 });
