@@ -1,6 +1,8 @@
-![MIT License][license-shield]
-
 ## Reduxle
+
+[![MIT License][license-shield]][license-url]
+[![Test CI][tests-shield]][tests-url]
+[![Coverage][coverage-shield]][coverage-url]
 
 An accessible wordle clone
 
@@ -43,3 +45,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 [license-shield]: https://img.shields.io/github/license/ruhibloodworth/reduxle
 [license-url]: https://github.com/ruhibloodworth/reduxle/blob/main/LICENSE
+[coverage-shield]: https://img.shields.io/coveralls/github/ruhibloodworth/reduxle
+[coverage-url]: https://coveralls.io/github/ruhibloodworth/reduxle
+[tests-shield]: https://github.com/ruhibloodworth/reduxle/actions/workflows/node.js.yml/badge.svg
+[tests-url]: https://github.com/ruhibloodworth/reduxle/actions/workflows/node.js.yml
