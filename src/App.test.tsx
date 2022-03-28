@@ -34,7 +34,13 @@ describe("Integration tests", () => {
     render(<App />);
     const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
     expect(rowContent(firstRow)).toEqual([" ", " ", " ", " ", " "]);
-    userEvent.keyboard("ABBOT{enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    expect(rowContent(firstRow)).toEqual(["A", "B", "B", "O", "T"]);
+  });
+  it("supports the backspace key", () => {
+    render(<App />);
+    userEvent.keyboard("ABBOU{Backspace}T{Enter}");
+    const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
     expect(rowContent(firstRow)).toEqual(["A", "B", "B", "O", "T"]);
   });
 });
