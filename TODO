@@ -12,3 +12,4 @@ fixes:
     ☐ Don't allow guesses less than 5 letters long
     ☐ Don't allow spaces in guesses
     ☐ Don't allow more than 6 guesses
+    ☐ limit guesses to valid words
