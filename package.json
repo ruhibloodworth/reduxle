@@ -31,6 +31,7 @@
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
     "@vitest/ui": "^0.7.12",
+    "c8": "^7.11.0",
     "husky": "^7.0.4",
     "jsdom": "^19.0.0",
     "lint-staged": "^12.3.7",
