@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { WORD_LENGTH } from "./constants";
 
 interface GuessesState {
   words: string[];
@@ -14,7 +15,7 @@ export const guessesSlice = createSlice({
       const idx = state.words.length - 1;
       if (action.payload == "Backspace") {
         state.words[idx] = state.words[idx].slice(0, -1);
-      } else {
+      } else if (state.words[idx].length < WORD_LENGTH) {
         state.words[idx] = state.words[idx] + action.payload;
       }
     },

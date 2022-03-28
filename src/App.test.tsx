@@ -43,4 +43,10 @@ describe("Integration tests", () => {
     const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
     expect(rowContent(firstRow)).toEqual(["A", "B", "B", "O", "T"]);
   });
+  it("limits guesses to 5 letters", () => {
+    render(<App />);
+    userEvent.keyboard("ABBOTS");
+    const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
+    expect(rowContent(firstRow)).toEqual(["A", "B", "B", "O", "T"]);
+  });
 });
