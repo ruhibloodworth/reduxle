@@ -1,9 +1,6 @@
-import Alert from "./Alert";
-import { inputLetter } from "./guessesSlice";
-import { useDispatch, useKeyboardInput } from "./hooks";
+import { AlertNotification } from "./alerts";
 import { styled } from "./stitches.config";
-import { guessIfPossible } from "./store";
-import WordGrid from "./WordGrid";
+import { useKeyboardInput, WordGrid } from "./guesses";
 
 const Container = styled("div", {
   maxWidth: "30rem",
@@ -21,14 +18,10 @@ const Title = styled("h1", {
 });
 
 export default function App() {
-  const dispatch = useDispatch();
-  useKeyboardInput(
-    (letter) => dispatch(inputLetter(letter)),
-    () => dispatch(guessIfPossible())
-  );
+  useKeyboardInput();
   return (
     <>
-      <Alert />
+      <AlertNotification />
       <Container>
         <Header>
           <Title>Reduxle</Title>

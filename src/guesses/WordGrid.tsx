@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { MAX_GUESSES, WORD_LENGTH } from "./constants";
-import { useSelector } from "./hooks";
-import { styled } from "./stitches.config";
+import { MAX_GUESSES, WORD_LENGTH } from "../constants";
+import { useSelector } from "../hooks";
+import { styled } from "../stitches.config";
 
 const Table = styled("table", {
   borderCollapse: "separate",

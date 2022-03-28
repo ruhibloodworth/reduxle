@@ -1,7 +1,9 @@
 import * as Toast from "@radix-ui/react-toast";
-import { clearAlert } from "./alertSlice";
-import { useDispatch, useSelector } from "./hooks";
-import { styled } from "./stitches.config";
+import { actions } from "./alertSlice";
+import { useDispatch, useSelector } from "../hooks";
+import { styled } from "../stitches.config";
+
+const { clearAlert } = actions;
 
 const StyledToast = styled(Toast.Root, {
   backgroundColor: "$uierrorbackground",
@@ -30,7 +32,7 @@ const ViewPort = styled(Toast.Viewport, {
   zIndex: 2147483647,
 });
 
-export default function Alert() {
+export default function AlertNotification() {
   const dispatch = useDispatch();
   const msg = useSelector((state) => state.alert);
   return (

@@ -7,13 +7,6 @@ features:
     ☐ persist state
     ☐ collect statistics
 fixes:
-    input guesses:
-        ✔ Support backspace to delete letters @done(22-03-27 19:53)
-        ✔ Limit word length to 5 letters @done(22-03-27 20:01)
-        ✔ Don't allow guesses less than 5 letters long @done(22-03-28 00:14)
-        ✔ Don't allow spaces in guesses @done(22-03-27 20:07)
-        ✔ Don't allow more than 6 guesses @done(22-03-27 20:10)
-        ✔ limit guesses to valid words @done(22-03-28 13:29)
-        ✔ close alert when the user types @done(22-03-28 14:08)
+
 refactor:
-    ☐ organize project by feature
+    ✔ organize project by feature @done(22-03-28 15:13)

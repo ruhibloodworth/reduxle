@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MAX_GUESSES, WORD_LENGTH } from "./constants";
+import { MAX_GUESSES, WORD_LENGTH } from "../constants";
 
 interface GuessesState {
   words: string[];
@@ -7,7 +7,7 @@ interface GuessesState {
 
 const initialState: GuessesState = { words: [""] };
 
-export const guessesSlice = createSlice({
+const guessesSlice = createSlice({
   name: "guesses",
   initialState,
   reducers: {
@@ -26,6 +26,5 @@ export const guessesSlice = createSlice({
     },
   },
 });
-export const { guess, inputLetter } = guessesSlice.actions;
 
-export default guessesSlice.reducer;
+export const { reducer, actions } = guessesSlice;
