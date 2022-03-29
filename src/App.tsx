@@ -1,6 +1,6 @@
 import { AlertNotification } from "./alerts";
 import { styled } from "./stitches.config";
-import { useKeyboardInput, WordGrid } from "./guesses";
+import { useKeyboardInput, Dialog, WordGrid } from "./guesses";
 
 const Container = styled("div", {
   maxWidth: "30rem",
@@ -22,6 +22,7 @@ export default function App() {
   return (
     <>
       <AlertNotification />
+      <Dialog />
       <Container>
         <Header>
           <Title>Reduxle</Title>

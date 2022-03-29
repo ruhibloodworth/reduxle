@@ -64,7 +64,7 @@ describe("Integration tests", () => {
     userEvent.keyboard("ABBOT{Enter}");
     userEvent.keyboard("ABBOT{Enter}");
     userEvent.keyboard("ABBOT{Enter}");
-    const rows = screen.queryAllByRole("row");
+    const rows = screen.queryAllByRole("row", { hidden: true });
     expect(rows.length).toEqual(6);
   });
   it("doesn't allow guesses with less than 5 letters", () => {
@@ -88,5 +88,22 @@ describe("Integration tests", () => {
     const secondRow = firstRow.nextElementSibling as Element;
     expect(rowContent(firstRow)).toEqual(["A", "A", "A", "A", "A"]);
     expect(rowContent(secondRow)).toEqual([" ", " ", " ", " ", " "]);
+  });
+  it("displays a dialog when the user correctly guesses the word", () => {
+    render(<App />);
+    userEvent.keyboard("ABOUT{Enter}");
+    expect(screen.getByRole("alertdialog")).toBeInTheDocument();
+    expect(screen.getByText(/Won/)).toBeInTheDocument();
+  });
+  it("display a dialog when the user doesn't guess the word in time", () => {
+    render(<App />);
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    userEvent.keyboard("ABBOT{Enter}");
+    expect(screen.getByRole("alertdialog")).toBeInTheDocument();
+    expect(screen.getByText(/Lost/)).toBeInTheDocument();
   });
 });

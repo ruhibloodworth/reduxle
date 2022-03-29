@@ -1,12 +1,14 @@
 features:
     ✔ grid for guesses @done(22-03-27 16:19)
     ✔ input guesses with keyboard @done(22-03-27 18:33):
-    ☐ win/lose if they guess the secret word
+    ✔ win/lose if they guess the secret word @done(22-03-28 21:56)
     ☐ show whether letters in guess are right
     ☐ on screen keyboard showing which letters have been used
     ☐ persist state
     ☐ collect statistics
 fixes:
+    win/lose:
+        ☐ randomly choose secret word from a list of more common 5 letter words
 
 refactor:
     ✔ organize project by feature @done(22-03-28 15:13)
