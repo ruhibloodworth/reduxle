@@ -1,6 +1,16 @@
 import { AlertNotification } from "./alerts";
 import { styled } from "./stitches.config";
-import { useKeyboardInput, Dialog, WordGrid } from "./guesses";
+import {
+  actions,
+  possibleAnswers,
+  useKeyboardInput,
+  Dialog,
+  WordGrid,
+} from "./guesses";
+import { useDispatch } from "./hooks";
+import { useEffect } from "react";
+
+const { startGame } = actions;
 
 const Container = styled("div", {
   maxWidth: "30rem",
@@ -18,6 +28,17 @@ const Title = styled("h1", {
 });
 
 export default function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(
+      startGame(
+        possibleAnswers[
+          Math.floor(Math.random() * (possibleAnswers.length - 1))
+        ]
+      )
+    );
+  }, []);
+
   useKeyboardInput();
   return (
     <>

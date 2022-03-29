@@ -10,7 +10,7 @@ interface GuessesState {
 
 const initialState: GuessesState = {
   state: "PLAYING",
-  answer: "ABOUT",
+  answer: null,
   words: [""],
 };
 
@@ -18,6 +18,11 @@ const guessesSlice = createSlice({
   name: "guesses",
   initialState,
   reducers: {
+    startGame: (state, action: PayloadAction<string>) => {
+      state = { ...initialState };
+      state.answer = action.payload;
+      return state;
+    },
     inputLetter: (state, action: PayloadAction<string>) => {
       if (state.state == "PLAYING") {
         const idx = state.words.length - 1;

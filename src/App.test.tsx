@@ -1,6 +1,16 @@
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import App from "./App";
 import { render, screen, userEvent } from "./test/utils";
+
+let originalRandom = Math.random;
+
+beforeAll(() => {
+  Math.random = () => 0;
+});
+
+afterAll(() => {
+  Math.random = originalRandom;
+});
 
 /**
  * Return the contents of all the children of row
@@ -91,7 +101,7 @@ describe("Integration tests", () => {
   });
   it("displays a dialog when the user correctly guesses the word", () => {
     render(<App />);
-    userEvent.keyboard("ABOUT{Enter}");
+    userEvent.keyboard("ABACK{Enter}");
     expect(screen.getByRole("alertdialog")).toBeInTheDocument();
     expect(screen.getByText(/Won/)).toBeInTheDocument();
   });
