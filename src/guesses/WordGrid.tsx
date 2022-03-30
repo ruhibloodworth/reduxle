@@ -2,6 +2,7 @@ import { FC } from "react";
 import { MAX_GUESSES, WORD_LENGTH } from "../constants";
 import { useSelector } from "../hooks";
 import { styled } from "../stitches.config";
+import { Unchecked } from "./guessesSlice";
 
 const Table = styled("table", {
   borderCollapse: "separate",
@@ -17,12 +18,29 @@ const Cell = styled("td", {
   textAlign: "center",
   fontSize: "2.5rem",
   fontWeight: "bold",
-  color: "text",
-  backgroundColor: "$uibackground",
+  color: "$uibackground",
+  variants: {
+    state: {
+      unchecked: {
+        color: "$text",
+        backgroundColor: "$uibackground",
+      },
+      correct: {
+        backgroundColor: "$correct",
+      },
+      misplaced: {
+        backgroundColor: "$misplaced",
+      },
+      missing: {
+        backgroundColor: "$missing",
+      },
+    },
+  },
 });
 
 const WordRow: FC<{ idx: number }> = ({ idx }) => {
   const word = useSelector((state) => state.guesses.words[idx] ?? "");
+  const score = useSelector((state) => state.guesses.scores[idx] ?? Unchecked);
   return (
     <tr role="row">
       {word
@@ -30,7 +48,7 @@ const WordRow: FC<{ idx: number }> = ({ idx }) => {
         .split("")
         .map((letter, i) => {
           return (
-            <Cell key={i} role="cell">
+            <Cell key={i} role="cell" state={score[i]} title={score[i]}>
               {letter}
             </Cell>
           );

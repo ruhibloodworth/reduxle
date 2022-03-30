@@ -27,6 +27,16 @@ const rowContent = (row: Element): string[] => {
   return values;
 };
 
+const rowTitles = (row: Element): string[] => {
+  let values = [];
+  let e = row.firstChild;
+  while (e !== null) {
+    values.push((e as HTMLElement).title);
+    e = e.nextSibling;
+  }
+  return values;
+};
+
 describe("Integration tests", () => {
   it("the title is visible", () => {
     render(<App />);
@@ -115,5 +125,17 @@ describe("Integration tests", () => {
     userEvent.keyboard("ABBOT{Enter}");
     expect(screen.getByRole("alertdialog")).toBeInTheDocument();
     expect(screen.getByText(/Lost/)).toBeInTheDocument();
+  });
+  it("scores the guess", () => {
+    render(<App />);
+    userEvent.keyboard("ABBOT{Enter}");
+    const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
+    expect(rowTitles(firstRow)).toEqual([
+      "correct",
+      "correct",
+      "missing",
+      "missing",
+      "missing",
+    ]);
   });
 });

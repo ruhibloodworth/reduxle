@@ -1,4 +1,4 @@
-import { gray, tomato, whiteA } from "@radix-ui/colors";
+import { grass, gray, orange, tomato, whiteA } from "@radix-ui/colors";
 import { createStitches } from "@stitches/react";
 
 const namedColors = {
@@ -9,12 +9,17 @@ const namedColors = {
   uierrorbackground: "$tomato4",
   uierrorborder: "$tomato8",
   overlay: "$whiteA11",
+  correct: "$grass9",
+  misplaced: "$orange9",
+  missing: "$gray9",
 };
 
 export const { styled, createTheme } = createStitches({
   theme: {
     colors: {
+      ...grass,
       ...gray,
+      ...orange,
       ...tomato,
       ...whiteA,
       ...namedColors,
