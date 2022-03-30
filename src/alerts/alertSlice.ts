@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { actions as guessActions } from "../guesses";
-import { rejected, startGame } from "../actions";
-
-const { inputLetter } = guessActions;
+import { inputLetter, rejected, startGame } from "../actions";
 
 type AlertState = string | null;
 

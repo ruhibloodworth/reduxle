@@ -4,11 +4,9 @@ import {
   useDispatch as useGenericDispatch,
   useSelector as useGenericSelector,
 } from "react-redux";
-import { actions } from "./guesses";
+import { inputLetter } from "./actions";
 import type { RootState, AppDispatch } from "./store";
 import { guessIfPossible } from "./validation";
-
-const { inputLetter } = actions;
 
 export const useDispatch = () => useGenericDispatch<AppDispatch>();
 export const useSelector: TypedUseSelectorHook<RootState> = useGenericSelector;

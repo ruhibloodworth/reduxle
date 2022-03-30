@@ -8,6 +8,8 @@ export const guess = createAction<{
   score: LetterScore[];
 }>("guess");
 
+export const inputLetter = createAction<string>("inputLetter");
+
 export const rejected = createAction<string>("rejected");
 
 export const startGame = createAction<string>("startGame");

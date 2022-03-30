@@ -5,6 +5,7 @@ import { Dialog } from "./gameState";
 import { possibleAnswers, WordGrid } from "./guesses";
 import { useKeyboardInput, useDispatch } from "./hooks";
 import { useEffect } from "react";
+import Keyboard from "./Keyboard";
 
 const Container = styled("div", {
   maxWidth: "30rem",
@@ -46,6 +47,7 @@ export default function App() {
           <WordGrid />
         </main>
       </Container>
+      <Keyboard />
     </>
   );
 }

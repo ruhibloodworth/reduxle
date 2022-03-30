@@ -1,3 +1,4 @@
+import { getByText } from "@testing-library/dom";
 import { beforeAll, describe, expect, it } from "vitest";
 import App from "./App";
 import { render, screen, userEvent } from "./test/utils";
@@ -137,5 +138,29 @@ describe("Integration tests", () => {
       "missing",
       "missing",
     ]);
+  });
+  it("renders the onscreen keyboard", () => {
+    render(<App />);
+    const keyboard = screen.getByTestId("keyboard");
+    expect(getByText(keyboard, "A")).toBeInTheDocument();
+    expect(getByText(keyboard, "B")).toBeInTheDocument();
+    expect(getByText(keyboard, "C")).toBeInTheDocument();
+    expect(getByText(keyboard, "D")).toBeInTheDocument();
+    expect(getByText(keyboard, "Enter")).toBeInTheDocument();
+    expect(getByText(keyboard, "Backspace")).toBeInTheDocument();
+  });
+  it("responds to the onscreen keyboard", () => {
+    render(<App />);
+    const keyboard = screen.getByTestId("keyboard");
+    userEvent.click(getByText(keyboard, "S"));
+    userEvent.click(getByText(keyboard, "O"));
+    userEvent.click(getByText(keyboard, "A"));
+    userEvent.click(getByText(keyboard, "R"));
+    userEvent.click(getByText(keyboard, "J"));
+    userEvent.click(getByText(keyboard, "Backspace"));
+    userEvent.click(getByText(keyboard, "E"));
+    userEvent.click(getByText(keyboard, "Enter"));
+    const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
+    expect(rowContent(firstRow)).toEqual(["S", "O", "A", "R", "E"]);
   });
 });
