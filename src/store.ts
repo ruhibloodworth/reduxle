@@ -1,10 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { reducer as alert } from "./alerts";
+import { reducer as answer } from "./answer";
+import { reducer as gameState } from "./gameState";
 import { reducer as guesses } from "./guesses";
 
 export const config = {
   reducer: {
+    answer,
     alert,
+    gameState,
     guesses,
   },
 };

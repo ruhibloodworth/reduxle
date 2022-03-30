@@ -1,4 +1,4 @@
-import { scoreGuess } from "./guessesSlice";
+import { scoreGuess } from "./validation";
 
 describe("scoreGuess", () => {
   it("marks correct guesses", () => {

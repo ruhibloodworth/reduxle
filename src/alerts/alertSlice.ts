@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { actions as guessActions } from "../guesses";
-import { rejected } from "../actions";
+import { rejected, startGame } from "../actions";
 
 const { inputLetter } = guessActions;
 
@@ -18,6 +18,9 @@ const alertSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(startGame, (state, action) => {
+        return initialState;
+      })
       .addCase(inputLetter, (state, action) => {
         if (state !== null) {
           return null;

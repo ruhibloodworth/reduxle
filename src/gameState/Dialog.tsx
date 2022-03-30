@@ -1,6 +1,7 @@
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { useSelector } from "../hooks";
 import { styled } from "../stitches.config";
+import { GameState } from "../types";
 
 const StyledOverlay = styled(AlertDialog.Overlay, {
   backgroundColor: "$overlay",
@@ -31,17 +32,17 @@ const StyledTitle = styled(AlertDialog.Title, {
 });
 
 export default function Dialog() {
-  const gameState = useSelector((state) => state.guesses.state);
+  const gameState = useSelector((state) => state.gameState);
   return (
     <AlertDialog.Root
-      open={gameState !== "PLAYING"}
+      open={gameState !== GameState.PLAYING}
       onOpenChange={(open) => {}}
     >
       <AlertDialog.Portal>
         <StyledOverlay />
         <StyledContent>
           <StyledTitle>
-            {gameState === "WON" ? "You Won!!" : "You Lost :("}
+            {gameState === GameState.WON ? "You Won!!" : "You Lost :("}
           </StyledTitle>
         </StyledContent>
       </AlertDialog.Portal>

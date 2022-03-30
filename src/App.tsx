@@ -1,16 +1,10 @@
+import { startGame } from "./actions";
 import { AlertNotification } from "./alerts";
 import { styled } from "./stitches.config";
-import {
-  actions,
-  possibleAnswers,
-  useKeyboardInput,
-  Dialog,
-  WordGrid,
-} from "./guesses";
-import { useDispatch } from "./hooks";
+import { Dialog } from "./gameState";
+import { possibleAnswers, WordGrid } from "./guesses";
+import { useKeyboardInput, useDispatch } from "./hooks";
 import { useEffect } from "react";
-
-const { startGame } = actions;
 
 const Container = styled("div", {
   maxWidth: "30rem",
