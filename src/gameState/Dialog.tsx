@@ -31,8 +31,11 @@ const StyledTitle = styled(AlertDialog.Title, {
   color: "$text",
 });
 
+const StyledDescription = styled(AlertDialog.Description, {});
+
 export default function Dialog() {
   const gameState = useSelector((state) => state.gameState);
+  const answer = useSelector((state) => state.answer);
   return (
     <AlertDialog.Root
       open={gameState !== GameState.PLAYING}
@@ -44,6 +47,7 @@ export default function Dialog() {
           <StyledTitle>
             {gameState === GameState.WON ? "You Won!!" : "You Lost :("}
           </StyledTitle>
+          <StyledDescription>The secret word was {answer}</StyledDescription>
         </StyledContent>
       </AlertDialog.Portal>
     </AlertDialog.Root>

@@ -115,6 +115,7 @@ describe("Integration tests", () => {
     userEvent.keyboard("ABACK{Enter}");
     expect(screen.getByRole("alertdialog")).toBeInTheDocument();
     expect(screen.getByText(/Won/)).toBeInTheDocument();
+    expect(screen.getByText(/ABACK/)).toBeInTheDocument();
   });
   it("display a dialog when the user doesn't guess the word in time", () => {
     render(<App />);
@@ -126,6 +127,7 @@ describe("Integration tests", () => {
     userEvent.keyboard("ABBOT{Enter}");
     expect(screen.getByRole("alertdialog")).toBeInTheDocument();
     expect(screen.getByText(/Lost/)).toBeInTheDocument();
+    expect(screen.getByText(/ABACK/)).toBeInTheDocument();
   });
   it("scores the guess", () => {
     render(<App />);

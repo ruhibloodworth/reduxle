@@ -5,7 +5,7 @@ features:
     ✔ show whether letters in guess are right @done(22-03-29 23:14)
     ✔ on screen keyboard showing which letters have been used @done(22-03-30 17:49)
     ☐ persist state
-    ☐ show answer in loss dialog
+    ✔ show answer in loss dialog @done(22-03-30 21:13)
     ☐ allow for restarting the game from the win/lose dialogs
     ☐ collect statistics
 fixes:
