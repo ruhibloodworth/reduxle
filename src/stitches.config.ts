@@ -12,6 +12,7 @@ const namedColors = {
   correct: "$grass9",
   misplaced: "$orange9",
   missing: "$gray9",
+  buttonhover: "$grass4",
 };
 
 export const { styled, createTheme } = createStitches({

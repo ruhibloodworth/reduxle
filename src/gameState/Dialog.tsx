@@ -1,4 +1,7 @@
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import { useDispatch } from "react-redux";
+import { startGame } from "../actions";
+import { possibleAnswers } from "../answer";
 import { useSelector } from "../hooks";
 import { styled } from "../stitches.config";
 import { GameState } from "../types";
@@ -33,7 +36,21 @@ const StyledTitle = styled(AlertDialog.Title, {
 
 const StyledDescription = styled(AlertDialog.Description, {});
 
+const StyledAction = styled(AlertDialog.Action, {
+  all: "unset",
+  backgroundColor: "$grass2",
+  padding: "0.5rem 0.75rem",
+  border: "1px solid $border",
+  borderRadius: 5,
+  cursor: "pointer",
+  fontWeight: 600,
+  "&:hover": {
+    backgroundColor: "$grass4",
+  },
+});
+
 export default function Dialog() {
+  const dispatch = useDispatch();
   const gameState = useSelector((state) => state.gameState);
   const answer = useSelector((state) => state.answer);
   return (
@@ -48,6 +65,19 @@ export default function Dialog() {
             {gameState === GameState.WON ? "You Won!!" : "You Lost :("}
           </StyledTitle>
           <StyledDescription>The secret word was {answer}</StyledDescription>
+          <StyledAction
+            onClick={() =>
+              dispatch(
+                startGame(
+                  possibleAnswers[
+                    Math.floor(Math.random() * (possibleAnswers.length - 1))
+                  ]
+                )
+              )
+            }
+          >
+            New Game
+          </StyledAction>
         </StyledContent>
       </AlertDialog.Portal>
     </AlertDialog.Root>
