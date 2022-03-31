@@ -163,4 +163,28 @@ describe("Integration tests", () => {
     const firstRow = screen.getByTestId("wordgrid-body").firstChild as Element;
     expect(rowContent(firstRow)).toEqual(["S", "O", "A", "R", "E"]);
   });
+  it("changes the state of keys on the onscreen keyboard", () => {
+    render(<App />);
+    const keyboard = screen.getByTestId("keyboard");
+    expect(getByText(keyboard, "A").title).toEqual("unchecked");
+    expect(getByText(keyboard, "B").title).toEqual("unchecked");
+    expect(getByText(keyboard, "O").title).toEqual("unchecked");
+    expect(getByText(keyboard, "T").title).toEqual("unchecked");
+    userEvent.keyboard("ABBOT{Enter}");
+    expect(getByText(keyboard, "A").title).toEqual("correct");
+    expect(getByText(keyboard, "B").title).toEqual("correct");
+    expect(getByText(keyboard, "O").title).toEqual("missing");
+    expect(getByText(keyboard, "T").title).toEqual("missing");
+  });
+  it("key states only move from unchecked>missing|misplaced|correct and misplaced>correct", () => {
+    render(<App />);
+    const keyboard = screen.getByTestId("keyboard");
+    expect(getByText(keyboard, "B").title).toEqual("unchecked");
+    userEvent.keyboard("BISON{Enter}");
+    expect(getByText(keyboard, "B").title).toEqual("misplaced");
+    userEvent.keyboard("ABOUT{Enter}");
+    expect(getByText(keyboard, "B").title).toEqual("correct");
+    userEvent.keyboard("BOMBS{Enter}");
+    expect(getByText(keyboard, "B").title).toEqual("correct");
+  });
 });

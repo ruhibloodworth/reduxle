@@ -3,12 +3,15 @@ features:
     ✔ input guesses with keyboard @done(22-03-27 18:33):
     ✔ win/lose if they guess the secret word @done(22-03-28 21:56)
     ✔ show whether letters in guess are right @done(22-03-29 23:14)
-    ☐ on screen keyboard showing which letters have been used
+    ✔ on screen keyboard showing which letters have been used @done(22-03-30 17:49)
     ☐ persist state
     ☐ show answer in loss dialog
     ☐ allow for restarting the game from the win/lose dialogs
     ☐ collect statistics
 fixes:
 
+tests:
+    on screen keyboard:
+        ✔ test that onscreen keyboard keystate changes @done(22-03-30 18:30)
 refactor:
     ✔ move endgame state and answer out of guesses @done(22-03-30 14:32)

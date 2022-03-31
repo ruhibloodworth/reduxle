@@ -55,6 +55,7 @@ export default function Keyboard() {
             <Key
               key={i}
               state={letters[key] || "unchecked"}
+              title={letters[key] || "unchecked"}
               onClick={() => {
                 if (key == "Enter") {
                   dispatch(guessIfPossible());

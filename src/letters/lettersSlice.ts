@@ -24,16 +24,13 @@ const lettersScoreSlice = createSlice({
             state[word[i]] = score[i];
             break;
           }
-          case "missing": {
-            if (score[i] == "misplaced" || score[i] == "correct") {
-              state[word[i]] = score[i];
-            }
-            break;
-          }
           case "misplaced": {
             if (score[i] == "correct") {
               state[word[i]] = score[i];
             }
+            break;
+          }
+          case "missing": {
             break;
           }
           case "correct": {
