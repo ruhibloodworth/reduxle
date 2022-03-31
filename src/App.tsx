@@ -1,8 +1,9 @@
 import { startGame } from "./actions";
+import { possibleAnswers } from "./answer";
 import { AlertNotification } from "./alerts";
 import { styled } from "./stitches.config";
 import { Dialog } from "./gameState";
-import { possibleAnswers, WordGrid } from "./guesses";
+import { WordGrid } from "./guesses";
 import { useKeyboardInput, useDispatch } from "./hooks";
 import { useEffect } from "react";
 import Keyboard from "./Keyboard";
