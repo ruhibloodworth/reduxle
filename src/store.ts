@@ -5,6 +5,20 @@ import { reducer as gameState } from "./gameState";
 import { reducer as guesses } from "./guesses";
 import { reducer as letters } from "./letters";
 
+const getStoredState = () => {
+  const { version, storedState } = JSON.parse(
+    localStorage.getItem("reduxle-state") || "null"
+  ) || { version: 0, state: undefined };
+  switch (version) {
+    case 1: {
+      return storedState;
+    }
+    default: {
+      return undefined;
+    }
+  }
+};
+
 export const config = {
   reducer: {
     answer,
@@ -13,8 +27,7 @@ export const config = {
     guesses,
     letters,
   },
-  preloadedState:
-    JSON.parse(localStorage.getItem("reduxle-state") || "null") || undefined,
+  preloadedState: getStoredState(),
 };
 
 export const store = configureStore(config);
@@ -24,5 +37,8 @@ export type AppDispatch = typeof store.dispatch;
 
 store.subscribe(() => {
   const state = store.getState();
-  localStorage.setItem("reduxle-state", JSON.stringify(state));
+  localStorage.setItem(
+    "reduxle-state",
+    JSON.stringify({ version: 1, state: state })
+  );
 });
