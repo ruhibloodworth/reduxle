@@ -4,7 +4,7 @@ import { AlertNotification } from "./alerts";
 import { styled } from "./stitches.config";
 import { Dialog } from "./gameState";
 import { WordGrid } from "./guesses";
-import { useKeyboardInput, useDispatch } from "./hooks";
+import { useKeyboardInput, useDispatch, useSelector } from "./hooks";
 import { useEffect } from "react";
 import Keyboard from "./Keyboard";
 
@@ -25,15 +25,18 @@ const Title = styled("h1", {
 
 export default function App() {
   const dispatch = useDispatch();
+  const answer = useSelector((state) => state.answer);
   useEffect(() => {
-    dispatch(
-      startGame(
-        possibleAnswers[
-          Math.floor(Math.random() * (possibleAnswers.length - 1))
-        ]
-      )
-    );
-  }, []);
+    if (answer === null) {
+      dispatch(
+        startGame(
+          possibleAnswers[
+            Math.floor(Math.random() * (possibleAnswers.length - 1))
+          ]
+        )
+      );
+    }
+  }, [answer]);
 
   useKeyboardInput();
   return (

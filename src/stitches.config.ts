@@ -15,7 +15,7 @@ const namedColors = {
   buttonhover: "$grass4",
 };
 
-export const { styled, createTheme } = createStitches({
+export const { styled, createTheme, css } = createStitches({
   theme: {
     colors: {
       ...grass,

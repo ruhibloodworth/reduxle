@@ -4,7 +4,7 @@ import { startGame } from "../actions";
 import { possibleAnswers } from "../answer";
 import { useSelector } from "../hooks";
 import { styled } from "../stitches.config";
-import { GameState } from "../types";
+import { GameStatus } from "../types";
 
 const StyledOverlay = styled(AlertDialog.Overlay, {
   backgroundColor: "$overlay",
@@ -49,22 +49,48 @@ const StyledAction = styled(AlertDialog.Action, {
   },
 });
 
+const Bar = styled("div", {
+  display: "inline-block",
+  backgroundColor: "$missing",
+  color: "$uibackground",
+  textAlign: "right",
+  margin: "0.1rem",
+  padding: "0 0.25rem",
+});
+
+const Label = styled("span", {
+  display: "inline-block",
+  width: "2.5rem",
+  textAlign: "right",
+});
+
 export default function Dialog() {
   const dispatch = useDispatch();
-  const gameState = useSelector((state) => state.gameState);
+  const status = useSelector((state) => state.gameState.status);
   const answer = useSelector((state) => state.answer);
+  const statistics = useSelector((state) =>
+    Object.entries(state.gameState.statistics)
+  );
+  let max = statistics.reduce((a, b) => Math.max(a, b[1]), -Infinity);
+  max = max === 0 ? 1 : max;
   return (
     <AlertDialog.Root
-      open={gameState !== GameState.PLAYING}
+      open={status !== GameStatus.PLAYING}
       onOpenChange={(open) => {}}
     >
       <AlertDialog.Portal>
         <StyledOverlay />
         <StyledContent>
           <StyledTitle>
-            {gameState === GameState.WON ? "You Won!!" : "You Lost :("}
+            {status === GameStatus.WON ? "You Won!!" : "You Lost :("}
           </StyledTitle>
           <StyledDescription>The secret word was {answer}</StyledDescription>
+          {Object.entries(statistics).map(([k, v]) => (
+            <div key={k}>
+              <Label>{v[0]}</Label>
+              <Bar css={{ width: `${3 + (v[1] / max) * 80}%` }}>{v[1]}</Bar>
+            </div>
+          ))}
           <StyledAction
             onClick={() =>
               dispatch(

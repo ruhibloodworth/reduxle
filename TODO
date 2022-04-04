@@ -4,14 +4,15 @@ features:
     ✔ win/lose if they guess the secret word @done(22-03-28 21:56)
     ✔ show whether letters in guess are right @done(22-03-29 23:14)
     ✔ on screen keyboard showing which letters have been used @done(22-03-30 17:49)
-    ☐ persist state
+    ✔ persist state @done(22-03-31 00:32)
     ✔ show answer in loss dialog @done(22-03-30 21:13)
     ✔ allow for restarting the game from the win/lose dialogs @done(22-03-30 21:44)
-    ☐ collect statistics
+    ✔ collect statistics @done(22-04-04 14:08)
+    ☐ add option to clear persisted state
+    ☐ change the background color of the guess number bar
 fixes:
-
+    ✔ add version to state to localstorage to handle changes to shape @done(22-04-01 16:10)
 tests:
-    on screen keyboard:
-        ✔ test that onscreen keyboard keystate changes @done(22-03-30 18:30)
+    localStorage:
+        ☐ test persisting state to and from localStorage
 refactor:
-    ✔ move endgame state and answer out of guesses @done(22-03-30 14:32)
