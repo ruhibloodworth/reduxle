@@ -1,9 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { guess, startGame } from "../actions";
 import { MAX_GUESSES } from "../constants";
-import { GameState } from "../types";
+import { GameStatus } from "../types";
 
-const initialState = GameState.PLAYING;
+interface State {
+  status: GameStatus;
+  statistics: {
+    failed: number;
+    [No: number]: number;
+  };
+}
+
+const initialState = {
+  status: GameStatus.PLAYING,
+  statistics: {
+    failed: 0,
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+  },
+} as State;
 
 const gameStateSlice = createSlice({
   name: "GameState",
@@ -12,20 +31,18 @@ const gameStateSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(startGame, (state, action) => {
-        return initialState;
+        state.status = GameStatus.PLAYING;
       })
       .addCase(guess, (state, action) => {
-        if (state === GameState.PLAYING) {
+        if (state.status === GameStatus.PLAYING) {
           const { isCorrect, No } = action.payload;
           if (isCorrect) {
-            return GameState.WON;
+            state.status = GameStatus.WON;
+            state.statistics[No + 1] += 1;
           } else if (No === MAX_GUESSES - 1) {
-            return GameState.LOST;
-          } else {
-            return GameState.PLAYING;
+            state.status = GameStatus.LOST;
+            state.statistics.failed += 1;
           }
-        } else {
-          return state;
         }
       });
   },

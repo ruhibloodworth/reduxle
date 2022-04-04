@@ -1,4 +1,4 @@
-export enum GameState {
+export enum GameStatus {
   PLAYING,
   WON,
   LOST,
