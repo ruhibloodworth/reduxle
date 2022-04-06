@@ -18,9 +18,11 @@ An accessible wordle clone
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+A demo is available at https://ruhibloodworth.github.io/reduxle/
 
 ### Installation
+
+To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo `git clone https://github.com/ruhibloodworth/reduxle.git`
 2. Install the dependencies `npm install`
