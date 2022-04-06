@@ -18,6 +18,8 @@ An accessible wordle clone
 
 ## Getting Started
 
+A demo is available at https://ruhibloodworth.github.io/reduxle/
+
 To get a local copy up and running follow these simple example steps.
 
 ### Installation
