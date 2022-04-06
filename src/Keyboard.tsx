@@ -13,18 +13,30 @@ const Container = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  maxWidth: "35rem",
+  margin: "auto",
+});
+
+const Row = styled("div", {
+  width: "100%",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
 });
 
 const Key = styled("div", {
-  display: "inline-block",
-  padding: "1rem",
-  margin: "0.25rem",
-  minWidth: "1rem",
+  flex: 1,
+  display: "inline-flex",
+  justifyContent: "center",
+  alignItems: "center",
+  margin: "0.5%",
+  height: "min(3rem, 6vh)",
   textAlign: "center",
   border: "1px solid $border",
   borderRadius: "4px",
   color: "$uibackground",
   cursor: "pointer",
+  fontSize: "min(max(1rem, 4vw), 16px)",
   variants: {
     state: {
       unchecked: {
@@ -50,7 +62,7 @@ export default function Keyboard() {
   return (
     <Container data-testid="keyboard">
       {keyboardKeys.map((row, i) => (
-        <div key={i}>
+        <Row key={i}>
           {row.map((key, i) => (
             <Key
               key={i}
@@ -67,7 +79,7 @@ export default function Keyboard() {
               {key}
             </Key>
           ))}
-        </div>
+        </Row>
       ))}
     </Container>
   );
